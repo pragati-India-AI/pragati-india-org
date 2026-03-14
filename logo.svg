@@ -1,0 +1,26 @@
+<svg width="500" height="104" viewBox="50 48 500 104" xmlns="http://www.w3.org/2000/svg">
+
+  <defs>
+    <style>
+      .bg-pill { fill: #f5f4ff; stroke: #d8d4f5; }
+      .nm      { font-family: Arial, sans-serif; fill: #1e1a4a; }
+      .sub     { font-family: Arial, sans-serif; fill: #8882c4; }
+    </style>
+  </defs>
+
+  <!-- Pill shape -->
+  <rect x="50" y="48" width="500" height="104" rx="52" class="bg-pill" stroke-width="1.5"/>
+
+  <!-- Tricolor dots -->
+  <circle cx="120" cy="100" r="11" fill="#FF9933"/>
+  <circle cx="148" cy="100" r="11" fill="#e8e8e8"/>
+  <circle cx="176" cy="100" r="11" fill="#138808"/>
+
+  <!-- Hindi + English wordmark -->
+  <text x="210" y="90"  class="nm" font-size="30" font-weight="bold">प्रगति AI</text>
+  <text x="210" y="122" class="sub" font-size="15" letter-spacing="2">INDIA · भारत</text>
+
+  <!-- Tagline inside pill -->
+  <text x="430" y="105" font-family="Arial, sans-serif" font-size="10" fill="#b0acd8" text-anchor="middle" letter-spacing="1.2">AI IMPLEMENTATION<tspan x="430" dy="14">PARTNER</tspan></text>
+
+</svg>
