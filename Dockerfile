@@ -6,4 +6,5 @@ COPY script.js /usr/share/nginx/html/
 COPY logo.svg /usr/share/nginx/html/
 COPY sitemap.xml /usr/share/nginx/html/
 COPY robots.txt /usr/share/nginx/html/
+COPY blog/ /usr/share/nginx/html/blog/
 EXPOSE 8080
