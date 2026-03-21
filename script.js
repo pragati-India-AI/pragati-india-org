@@ -61,22 +61,52 @@ const style = document.createElement('style');
 style.textContent = '.visible { opacity: 1 !important; transform: translateY(0) !important; }';
 document.head.appendChild(style);
 
-// Contact form handling — submits to Google Forms via hidden iframe
+// Contact form handling — submits to backend server to send email
 const contactForm = document.getElementById('contactForm');
-contactForm.addEventListener('submit', () => {
+contactForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
     const btn = contactForm.querySelector('button[type="submit"]');
     const originalText = btn.textContent;
-    btn.textContent = 'Inquiry Sent!';
-    btn.style.background = '#22c55e';
-    btn.style.borderColor = '#22c55e';
+    btn.textContent = 'Sending...';
     btn.disabled = true;
+
+    // Collect form data
+    const formData = new FormData(contactForm);
+    const data = {
+        name: formData.get('entry.2020993141'),
+        email: formData.get('entry.1766187341'),
+        phone: formData.get('entry.1435237760'),
+        inquiry: formData.get('entry.366736841'),
+        message: formData.get('entry.838248928')
+    };
+
+    try {
+        const response = await fetch('http://localhost:3001/api/contact', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+        });
+        if (response.ok) {
+            btn.textContent = 'Inquiry Sent!';
+            btn.style.background = '#22c55e';
+            btn.style.borderColor = '#22c55e';
+            contactForm.reset();
+        } else {
+            btn.textContent = 'Error! Try Again';
+            btn.style.background = '#ef4444';
+            btn.style.borderColor = '#ef4444';
+        }
+    } catch (err) {
+        btn.textContent = 'Error! Try Again';
+        btn.style.background = '#ef4444';
+        btn.style.borderColor = '#ef4444';
+    }
 
     setTimeout(() => {
         btn.textContent = originalText;
         btn.style.background = '';
         btn.style.borderColor = '';
         btn.disabled = false;
-        contactForm.reset();
     }, 3000);
 });
 
